@@ -1,4 +1,10 @@
-# require 'pry'
+# Added the official solution as an alternative to the 
+# originally written working solution shown below:
+#
+# More test have to be done to find out which solution 
+# is faster for large and continuously updated libraries
+# of songs.
+#
 
 class Song
 
@@ -26,7 +32,7 @@ class Song
     @@genres.uniq
   end  
 
-  def self.artist_count
+  def self.artist_count_0
     artists = @@artists.sort!
     ct = 0
     key = artists[0]
@@ -44,7 +50,7 @@ class Song
     @@count
   end
 
-  def self.genre_count
+  def self.genre_count_0
     genres = @@genres.sort!
     ct = 0
     key = genres[0]
@@ -58,4 +64,28 @@ class Song
     end ]
   end
 
+  def self.artist_count
+    artist_count = {}
+    @@artists.each do |artist|
+      if artist_count[artist]
+        artist_count[artist] += 1 
+      else
+        artist_count[artist] = 1
+      end
+    end
+    artist_count
+  end
+
+  def self.genre_count
+    genre_count = {}
+    @@genres.each do |genre|
+      if genre_count[genre]
+        genre_count[genre] += 1 
+      else
+        genre_count[genre] = 1
+      end
+    end
+    genre_count
+  end
+  
 end
